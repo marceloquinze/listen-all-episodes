@@ -1,0 +1,16 @@
+{
+  "name": "listen-all-episodes",
+  "version": "1.0.0",
+  "description": "This is a block specially create for DXCB's website, a radio enthusiast club in Brazil. The block simply add a \"Listen All Episodes\" option to the editor that allows site owners to add a custom link to all episodes of a given radio program.",
+  "main": "index.js",
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "^26.16.0"
+  }
+}

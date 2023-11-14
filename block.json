@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dxcb/listen-all-episodes",
+	"version": "1.0.0",
+	"title": "Listen All Episodes",
+	"category": "common",
+	"icon": "playlist-audio",
+	"description": "Um bloco simples para adicionar um link padronizado para ouvir todos os eposódios de um programa de rádio.",
+	"attributes": {
+		"link": {
+			"type": "string"
+		},
+		"new-tab": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"example": {
+		"attributes": {
+			"link": "https://www.ondascurtas.com",
+			"new-tab": true
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "listen-all",
+	"editorScript": "file:./build/index.js"
+}
