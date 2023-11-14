@@ -11,7 +11,7 @@
 		"link": {
 			"type": "string"
 		},
-		"new-tab": {
+		"newTab": {
 			"type": "boolean",
 			"default": true
 		}
@@ -19,7 +19,7 @@
 	"example": {
 		"attributes": {
 			"link": "https://www.ondascurtas.com",
-			"new-tab": true
+			"newTab": true
 		}
 	},
 	"supports": {

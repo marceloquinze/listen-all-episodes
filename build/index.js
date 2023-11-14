@@ -48,7 +48,7 @@ module.exports = window["wp"]["components"];
   \********************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"dxcb/listen-all-episodes","version":"1.0.0","title":"Listen All Episodes","category":"common","icon":"playlist-audio","description":"Um bloco simples para adicionar um link padronizado para ouvir todos os eposódios de um programa de rádio.","attributes":{"link":{"type":"string"},"new-tab":{"type":"boolean","default":true}},"example":{"attributes":{"link":"https://www.ondascurtas.com","new-tab":true}},"supports":{"html":false},"textdomain":"listen-all","editorScript":"file:./build/index.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"dxcb/listen-all-episodes","version":"1.0.0","title":"Listen All Episodes","category":"common","icon":"playlist-audio","description":"Um bloco simples para adicionar um link padronizado para ouvir todos os eposódios de um programa de rádio.","attributes":{"link":{"type":"string"},"newTab":{"type":"boolean","default":true}},"example":{"attributes":{"link":"https://www.ondascurtas.com","newTab":true}},"supports":{"html":false},"textdomain":"listen-all","editorScript":"file:./build/index.js"}');
 
 /***/ })
 
@@ -141,6 +141,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_1__, {
   edit,
   save
@@ -148,25 +149,35 @@ __webpack_require__.r(__webpack_exports__);
 function edit(props) {
   //blockProps faz o elemento se integrar ao editor (ficar constrito à caixa e selecionável)
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)();
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+
+  //const [isChecked, setChecked] = useState( true );
+
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: "Link URL"
+    title: "Link Options"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
     label: "Show URL",
     value: props.attributes.link,
     onChange: x => props.setAttributes({
       link: x
     })
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.CheckboxControl, {
+    label: "Open in a new tab?",
+    help: "Will this link open in a new tab?",
+    checked: props.attributes.newTab,
+    onChange: x => props.setAttributes({
+      newTab: x
+    })
   })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    target: "",
+    target: props.attributes.newTab === true ? '_blank' : '_self',
     href: props.attributes.link,
     rel: "noopener"
   }, "Escute todos os programas"));
 }
 function save(props) {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    target: "",
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    target: props.attributes.newTab === true ? '_blank' : '_self',
     href: props.attributes.link,
     rel: "noopener"
   }, "Escute todos os programas"));
