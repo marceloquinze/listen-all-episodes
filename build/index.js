@@ -149,9 +149,15 @@ __webpack_require__.r(__webpack_exports__);
 function edit(props) {
   //blockProps faz o elemento se integrar ao editor (ficar constrito à caixa e selecionável)
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)();
+  const [isChecked, setChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
 
-  //const [isChecked, setChecked] = useState( true );
-
+  // Posso fazer assim, ou com arrow function
+  // ver abaixo exemplo com arrow function
+  function setLink(value) {
+    props.setAttributes({
+      link: value
+    });
+  }
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
@@ -159,12 +165,10 @@ function edit(props) {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
     label: "Show URL",
     value: props.attributes.link,
-    onChange: x => props.setAttributes({
-      link: x
-    })
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.CheckboxControl, {
+    onChange: setLink
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     label: "Open in a new tab?",
-    help: "Will this link open in a new tab?",
+    help: props.attributes.newTab ? 'Opens in new tab' : 'Opens in same tab',
     checked: props.attributes.newTab,
     onChange: x => props.setAttributes({
       newTab: x

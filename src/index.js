@@ -1,7 +1,7 @@
 import metadata from '../block.json';
 import { registerBlockType } from '@wordpress/blocks';
-import {InspectorControls, BlockControls, useBlockProps} from '@wordpress/block-editor';
-import {PanelBody, PanelRow, TextControl, CheckboxControl} from '@wordpress/components';
+import {InspectorControls, useBlockProps} from '@wordpress/block-editor';
+import {PanelBody, PanelRow, TextControl, ToggleControl, CheckboxControl} from '@wordpress/components';
 import { useState } from 'react';
 
 registerBlockType(
@@ -16,7 +16,13 @@ function edit(props){
 	//blockProps faz o elemento se integrar ao editor (ficar constrito à caixa e selecionável)
 	const blockProps = useBlockProps();
 
-	//const [isChecked, setChecked] = useState( true );
+	const [isChecked, setChecked] = useState( true );
+
+	// Posso fazer assim, ou com arrow function
+	// ver abaixo exemplo com arrow function
+	function setLink(value){
+		props.setAttributes({ link: value })
+	}
 
 	return (
 		<p {...blockProps}>
@@ -26,13 +32,13 @@ function edit(props){
 						<TextControl
 							label="Show URL"
 							value={ props.attributes.link }
-							onChange={ x => props.setAttributes({ link: x })}
+							onChange={ setLink }
 						/>
 					</PanelRow>
 					<PanelRow>
-						<CheckboxControl
+						<ToggleControl
 							label="Open in a new tab?"
-							help= "Will this link open in a new tab?"
+							help={ props.attributes.newTab ? 'Opens in new tab' : 'Opens in same tab'}
 							checked={ props.attributes.newTab }
 							onChange={ x => props.setAttributes({ newTab: x }) }
 						/>
