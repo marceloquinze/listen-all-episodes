@@ -11,7 +11,7 @@ registerBlockType(
 		save
 	}
 );
-
+//test
 function edit(props){
 	//blockProps faz o elemento se integrar ao editor (ficar constrito à caixa e selecionável)
 	const blockProps = useBlockProps();
